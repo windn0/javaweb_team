@@ -11,7 +11,7 @@ public class ErrorController {
 
     @RequestMapping(value = "/error")
     public String error() {
-        return "error";
+        return "template/error";
     }
 
 }
