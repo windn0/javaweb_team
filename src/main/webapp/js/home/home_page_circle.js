@@ -40,17 +40,17 @@ $(function () {
     // }
 
     function moveToNext() {
-        var temp = $('.current').next();
-        if (temp.attr("class") != "my_slide") {
-            temp = $('.my_slide:first');
-        }
-        temp.css({left: "80%"}).show(0).animate({left: "10%", opacity: 1}, 1000, function () {
-            $('.current').hide(0);
-            $('.current').removeClass("current");
-            temp.addClass("current").css({"z-index": 0});
-            time_out = setTimeout(moveToRight, 3500);
-            isMove = false;
-        });
+        // var temp = $('.current').next();
+        // if (temp.attr("class") != "my_slide") {
+        //     temp = $('.my_slide:first');
+        // }
+        // temp.css({left: "80%"}).show(0).animate({left: "10%", opacity: 1}, 1000, function () {
+        //     $('.current').hide(0);
+        //     $('.current').removeClass("current");
+        //     temp.addClass("current").css({"z-index": 0});
+        //     time_out = setTimeout(moveToRight, 3500);
+        //     isMove = false;
+        // });
     }
 
     function nextPrepare() {

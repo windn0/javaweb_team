@@ -23,6 +23,7 @@
         <property name="minIdle" value="${minIdle}"/>
         <property name="maxWait" value="${maxWait}"/>
 
+
     </bean>
 
 

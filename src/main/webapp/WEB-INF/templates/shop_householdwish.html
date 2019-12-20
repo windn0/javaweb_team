@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>layout 后台大布局 - Layui</title>
+    <link rel="stylesheet" href="layui/css/layui.css"/>
+    <link href="css/home_page/home_page_circle.css" rel="stylesheet" />
+    <link href="css/home_page/header_and_nav.css" rel="stylesheet" />
+    <link href="css/home_page/bottom_ifon_and_feature.css" rel="stylesheet" />
+    <script src="js/jquery-1.3.2.min.js"></script>
+    <script src="js/home/home_page_circle.js"></script>
+    <script src="js/home/header_model_js.js"></script>
+    <style>
+        .layui-tab-item{
+            overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+    </style>
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">c2c校园交易平台</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/layui_publish.do">发布商品</a></li>
+            <li class="layui-nav-item"><a href="/layui_wishes.do">求购商品</a></li>
+            <li class="layui-nav-item"><a href="/layui_cart.do">购物车</a></li>
+
+        </ul>
+
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item" >
+                <div class="layui-layer-input" style="width: 200px;">
+                    <form id="searchform" action="/layui_search.do">
+                        <input type="text" id="searchbox" name="name" required="required" lay-verify="required" placeholder="请输入搜索内容" autocomplete="off" class="layui-input"/>
+                    </form>
+
+                </div>
+            </li>
+            <li class="layui-nav-item" layui-disabled="layui-disabled">
+                <a  class="layui-btn-radius" id="btn_search">
+                    搜索
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <!--                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img"/>-->
+                    <b th:if="${session.userInformation2.getUsername()==null}">未登录</b>
+                    <b th:if="${session.userInformation2.getUsername()!=null}"
+                       th:text="${session.userInformation2.getUsername()}">青青</b>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/layui_selfInfo.do">基本资料</a></dd>
+                    <dd><a href="/layui_mypublish.do">个人发布</a></dd>
+                    <dd><a href="/layui_mywishes.do">个人求购</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/layui_login.do" th:if="${session.userInformation2.getUsername()==null}">登录</a>
+                <a href="/layui_logout.do" th:if="${session.userInformation2.getUsername() !=null}">退出</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+
+                <li class="layui-nav-item  "><a href="/main.do">首页</a></li>
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">二手商城</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/shop_digital.do">数码科技</a></dd>
+                        <dd  class="layui-this"><a href="/shop_household.do">影音家电</a></dd>
+                        <dd ><a href="/shop_clothes.do">鞋服配饰</a></dd>
+                        <dd><a href="/shop_sport.do">运动代步</a></dd>
+                        <dd><a href="/shop_book.do">书籍文具</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">求购商店</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/shop_digitalwish.do">数码科技</a></dd>
+                        <dd  class="layui-this"><a href="/shop_householdwish.do">影音家电</a></dd>
+                        <dd ><a href="/shop_clotheswish.do">鞋服配饰</a></dd>
+                        <dd><a href="/shop_sportwish.do">运动代步</a></dd>
+                        <dd><a href="/shop_bookwish.do">书籍文具</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="display: flex;">
+            <div style="flex: 1; background:  #0086B3;"></div>
+            <div style="flex: 10;">
+
+
+                <div style="width: 94%;padding-bottom: 2em;height: auto;position: absolute;left: 4%; top: 8%;display: inline;background-color: white; box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);border-radius: 10px;">
+                    <h2 style=" margin-left: 43.5%; margin-top: 2%;margin-bottom: 3%;">家电影音</h2>
+                    <div style="margin: 10px; ">
+                        <div class="layui-collapse " lay-accordion="lay-accordion">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">家电</h2>
+                                <div class="layui-colla-content">
+                                    <div class="layui-tab layui-tab-card" style="height: auto; ">
+                                        <ul class="layui-tab-title">
+                                            <li lay-id="22" class="layui-this">洗衣机</li>
+                                            <li lay-id="23">饮水机</li>
+                                            <li lay-id="25">剃须刀</li>
+                                            <li lay-id="24">吹风机</li>
+                                            <li lay-id="26">风扇</li>
+                                            <li lay-id="27">煮蛋器</li>
+                                            <li lay-id="28">电磁炉</li>
+                                            <li lay-id="29">电饭煲</li>
+                                            <li lay-id="30">其他</li>
+                                        </ul>
+                                        <div class="layui-tab-content">
+                                            <div class="layui-tab-item " style="overflow: scroll; overflow-x: hidden;">
+
+
+
+                                            </div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">家庭影影</h2>
+                                <div class="layui-colla-content ">
+                                    <div class="layui-tab layui-tab-card" style="height: auto; ">
+                                        <ul class="layui-tab-title">
+                                            <li lay-id="31" class="layui-this">耳机</li>
+                                            <li lay-id="32">音箱</li>
+                                            <li lay-id="33">功放</li>
+                                            <li lay-id="34">低音炮</li>
+                                            <li lay-id="35">麦克风</li>
+
+
+                                        </ul>
+                                        <div class="layui-tab-content">
+                                            <div class="layui-tab-item " style="overflow: scroll; overflow-x: hidden;">
+                                            </div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+                                            <div class="layui-tab-item"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 1;  background: #0086B3;"></div>
+        </div>
+
+        <!-- <div style="padding: 15px;">
+
+
+
+
+
+        </div> -->
+    </div>
+
+
+
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © JavaWeb小组呀 - 底部固定区域
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    $(document).on('click',"#publish_this",function(){
+        //layer.msg("按钮点击");
+        //console.log("点击了")
+
+        $.ajax({
+            url:'/publish_fromwish.do',
+            dataType:'JSON',
+            type:'post',
+            success:function (data) {
+                var result = data.result;
+                if (result == '2'){
+                    alert('您还未登录，请先登录！！！');
+                    window.location.href = '/layui_login.do';
+                } else if (result == '1'){
+                    window.location.href = '/layui_publish.do';
+                } else if (result == '0'){
+                    alert('加入购物车失败');
+                } else {
+                    alert('发生了错误，请检测网络');
+                }
+            }
+        })//这里我不想点位加入购物车就挑转，想留在这个就得用到前端控制后端。放回结果后处理。
+        // window.location.href = '/layui_wishes.do';
+        //console.log("点击了")
+    });
+
+
+    $(document).on('click',"#btn_search",function(){
+        //layer.msg("按钮点击");
+        //console.log("点击了")
+        $('#searchform').submit();
+        //console.log("点击了")
+    });
+
+    //1、指定id 2、删除代码 3、指定style 4、去掉itemshow
+    var $all_product = $('.layui-tab-item');//这样做有一个大的不足：会在所有面板下添加items，但因为这些面板没有展开，所以用户不可见，除非用户使用开发者模式看html代码。
+
+
+    layui.use('element', function () {
+        var element = layui.element;
+
+
+        var $ = jQuery = layui.jquery;
+
+        console.log("dddd#d");
+        var sort = null;
+        element.on('collapse()', function(data){
+            $all_product.html('');//如果发生折叠面板的切换，那么就全部清空掉。
+            element.render();
+        });
+        element.on('tab()', function () {
+
+            sort = this.getAttribute('lay-id');
+            console.log(this.getAttribute('lay-id'));
+            $.ajax({
+                url: "/getItemOfWishesBySort.do",
+                type: "POSt",
+                dataType: "JSON",
+                data: {sort: sort},
+                success: function (data) {
+                    $all_product.html('');
+                    if (data.length === 0) {
+                        // $all_product.append("<div class='product_content_div'>" + "<div class='detail_product'>" + "<input type='hidden' value= ''/>" + "<div class='product_img_div'><img src='' title='暂时没有该分类的商品' /></div>" + "<span class='detail_product_name'></span><br/>" + "<span class='detail_product_cost'></span><br/>" + "<span class='detail_buy product_1'>加入购物车</span>" + "</div>" + "</div>");
+
+                        $all_product.append("<b>空空如也呦~</b>")
+                    }
+                    for (var i = 0; i < data.length; i++) {
+                        $all_product.append("<div class=\"product\" style=\"position: relative; float: left;margin-bottom: 2%; margin-top: 2%;margin-left: 2%;margin-right: 1%;display: block;text-align: center;line-height: 2em;width: 14.5%;height: 350px;border-radius: 6px;padding: 1em;box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);\" >\n" +
+                            "<div class=\"layui-card\">\n" +
+                            "<div class=\"layui-card-header\">\n" +
+                            "商品\n" +
+                            "</div>\n" +
+                            "<div class=\"layui-card-body\">\n" +
+                            "<div style=\"height: 14rem\">\n" +
+                            "<div class=\"product_img_div\">\n" +
+                            "<img \n" +
+                            "class=\"show_img\" src=\"img/kkkkkkk.jpg\"/>\n" +
+                            "</div>\n" +
+                            "<p class=\"show_tip\" text=\"" + data[i].remark + "\">" + data[i].remark + "</p>\n" +
+                            "<input class=\"product_id\" type=\"hidden\"\n" +
+                            "value=" + data[i].id + "/>\n" +
+                            "<a class=\"product_name\"\n" +
+                            "\n" +
+                            "text=\"" + data[i].name + "\" title=\"" + data[i].name + "\">" + data[i].name + "</a><br/>\n" +
+                            "<span style='color: rgba(0,0,0,0.85);\n" +
+                            "    font-size: 1.8em;\n" +
+                            "    display: inline-block;\n" +
+                            "    overflow-x: hidden;\n" +
+                            "\toverflow-y: hidden;' class=\"product_cost\" style=\"overflow-y: hidden\"\n" +
+                            ">" + "￥" + data[i].price + "元" + "</span><br/><br/>\n" +
+                            " </div>\n" +
+                            "\n" +
+                            "</div>\n" +
+                            "\n" +
+                            "</div>\n" +
+                            "<span id=\"publish_this\" class=\"layui-btn product_1\" value=\"" + data[i].id + "\">发布该商品</span>\n" +
+                            "</div>");
+
+                    }
+                    element.render();
+
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown, data) {
+
+                    console.log(errorThrown);
+                }
+            });
+
+        });
+
+
+    });
+    layui.use('carousel', function() {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1',
+            width: '100%' //设置容器宽度
+            ,
+            arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
+</script>
+</body>
+</html>
