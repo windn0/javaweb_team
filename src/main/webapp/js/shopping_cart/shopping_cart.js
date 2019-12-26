@@ -92,7 +92,7 @@ $(function () {
                         alert('您还没有登录，请先登录');
                     }  else if (result==1) {
                         alert("删除成功");
-                        window.location.href='layui_cart?result=删除成功';
+                     //  window.location.href='layui_cart.do?result=删除成功';
                     } else if (result==0){
                         alert('删除失败，请检测网络');
                     } else {
@@ -144,7 +144,7 @@ $(function () {
                         alert('您还没有登录，请先登录');
                     }  else if (result==1) {
                         alert("购买成功");
-                        window.location.href='layui_cart.do?result=购买成功';
+                       // window.location.href='layui_cart.do?result=购买成功';
                     } else if (result==0){
                         alert('删除失败，请检测网络');
                     } else {

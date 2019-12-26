@@ -14,7 +14,7 @@ public class ErrorController {
     @Resource
     private ShopCarMapper shopCarMapper;
 
-    @RequestMapping(value = {"/error.do","/error"})
+    @RequestMapping(value = {"/error.do"})
 
     public String error() {
        // ShopCar shopCar =   shopCarMapper.selectByUid(7);
