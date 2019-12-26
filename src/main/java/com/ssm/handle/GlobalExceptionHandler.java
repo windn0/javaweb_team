@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * @author wsk1103
- * @date 2019/5/8
- * @description 描述
- */
+
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {

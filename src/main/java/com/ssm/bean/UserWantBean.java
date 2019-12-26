@@ -3,9 +3,7 @@ package com.ssm.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by wsk1103 on 2017/5/21.
- */
+
 public class UserWantBean implements Serializable{
     private int id;
     private Date modified;

@@ -119,7 +119,7 @@
                         </div>
 
                     </div>
-                    <span class="layui-btn product_1" th:value="${o.id}">加入购物车</span>
+                    <span class="layui-btn product_1"  id="put_shopcart" th:value="${o.id}">加入购物车</span>
                 </figure>
             </div>
             <div style="flex: 1;"></div>
@@ -133,6 +133,32 @@
     </div>
     <script src="layui/layui.js"></script>
     <script>
+
+        $(function () {
+            $(document).on('click',"#put_shopcart",function () {
+                var id = $(this).attr('value');
+                $.ajax({
+                    url:'/insertGoodsCar.do',
+                    dataType:'JSON',
+                    type:'post',
+                    data:{id:id},
+                    success:function (data) {
+                        var result = data.result;
+                        if (result == '2'){
+                            alert('您还未登录，请先登录！！！');
+                            window.location.href = '/layui_login.do';
+                        } else if (result == '1'){
+                            alert('加入购物车成功');
+                        } else if (result == '0'){
+                            alert('加入购物车失败');
+                        } else {
+                            alert('发生了错误，请检测网络');
+                        }
+                    }
+                })//这里我不想点位加入购物车就挑转，想留在这个就得用到前端控制后端。放回结果后处理。
+            });
+
+        });
         //JavaScript代码区域
         $(document).on('click',"#btn_search",function(){
             //layer.msg("按钮点击");

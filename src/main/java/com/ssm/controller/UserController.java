@@ -155,7 +155,7 @@ public class UserController {
         String random ="image\\" +getrandom;
        // String random ="image/" +getrandom;
         String path = "E:\\ProjectHub\\javaweb\\ssm\\ssm_teamwork\\src\\main\\webapp\\"+random;
-       // String path = "/usr/local/tomcat8/webapps/ssm/"+random; //linux路径
+        //String path = "/usr/local/tomcat8/webapps/ssm/"+random; //linux路径
         String fileName = file.getOriginalFilename();
        // File dir = new File(path,fileName);
         File dir = new File(path);
@@ -176,9 +176,9 @@ public class UserController {
         StringBuilder thumbnails = new StringBuilder();
         StringBuilder wsk = new StringBuilder();
         thumbnails.append("E:\\ProjectHub\\javaweb\\ssm\\ssm_teamwork\\src\\main\\webapp\\");
-       // thumbnails.append("/usr/local/tomcat8/webapps/ssm/");
+        //thumbnails.append("/usr/local/tomcat8/webapps/ssm/");
         thumbnails.append("image\\thumbnails\\");
-        //thumbnails.append("image/thumbnails/");//linux路径
+       // thumbnails.append("image/thumbnails/");//linux路径
         wsk.append(StringUtils.getInstance().getRandomChar()).append(System.currentTimeMillis()).append(".jpg");
         thumbnails.append(wsk);
 //        File thumbnailsFile = new File(thumbnails.toString());

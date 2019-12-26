@@ -4,9 +4,7 @@ import com.ssm.pojo.Specific;
 
 import java.util.List;
 
-/**
- * Created by wsk1103 on 2017/5/13.
- */
+
 public interface SpecificeService {
     int deleteByPrimaryKey(Integer id);
 
