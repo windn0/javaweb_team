@@ -1,6 +1,4 @@
-/**
- * Created by alone on 2017/5/15.
- */
+
 var pingguo = createObject(1, '苹果');
 var sanxing = createObject(2, '三星');
 var xiaomi = createObject(3, '小米');

@@ -1,6 +1,4 @@
-/**
- * Created by alone on 2017/5/16.
- */
+
 $(function () {
     var typeList = getTypeList();
     var curFirst = 0;

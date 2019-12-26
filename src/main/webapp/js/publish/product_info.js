@@ -1,6 +1,4 @@
-/**
- * Created by wsk1103 on 2017/5/21.
- */
+
 $(function () {
     $('.send_comment_button').click(function () {
         var value = $('.comment_textarea').val();

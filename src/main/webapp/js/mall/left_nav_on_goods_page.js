@@ -1,6 +1,4 @@
-/**
- * Created by alone on 2017/5/14.
- */
+
 $(function () {
     insertShopCar();
     var type_list = getTypeList();

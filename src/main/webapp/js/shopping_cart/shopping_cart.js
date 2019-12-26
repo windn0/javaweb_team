@@ -1,6 +1,4 @@
-/**
- * Created by alone on 2017/5/18.
- */
+
 $(function () {
 //            按照下面这个方式添加新的元素，如果想在开头位置添加，就用first  before
 //            $('.table_content:last').after("<tr class='table_content'><td><span>11111</span></td></tr>");

@@ -1,6 +1,4 @@
-/**
- * Created by alone on 2017/5/13.
- */
+
 $(function () {
     $('body').click(function (e) {
         if (e.clientX > 150 || e.clientY > 300) {
